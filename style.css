@@ -350,6 +350,10 @@ footer{
         transform:rotate(360deg);
     }
 }
+a {
+  
+  color: pink;       
+}
 
 @keyframes floatingGlow{
 
