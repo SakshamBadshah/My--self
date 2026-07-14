@@ -1,0 +1,433 @@
+/* =========================
+   RESET
+========================= */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family: Arial, sans-serif;
+    background:#050816;
+    color:white;
+    overflow-x:hidden;
+    min-height:100vh;
+    position:relative;
+}
+
+/* =========================
+   ANIMATED BACKGROUND
+========================= */
+
+body::before{
+    content:'';
+    position:fixed;
+    width:200%;
+    height:200%;
+    top:-50%;
+    left:-50%;
+
+    background:
+    radial-gradient(circle, rgba(0,255,255,0.10) 0%, transparent 25%),
+    radial-gradient(circle, rgba(0,100,255,0.08) 0%, transparent 30%),
+    radial-gradient(circle, rgba(0,255,150,0.06) 0%, transparent 25%);
+
+    animation:moveBackground 18s linear infinite;
+    z-index:-3;
+}
+
+body::after{
+    content:'';
+    position:fixed;
+    width:500px;
+    height:500px;
+
+    background:rgba(0,255,255,0.08);
+
+    border-radius:50%;
+    filter:blur(120px);
+
+    top:20%;
+    left:20%;
+
+    animation:floatingGlow 8s ease-in-out infinite alternate;
+
+    z-index:-2;
+}
+
+/* =========================
+   NAVBAR
+========================= */
+
+nav{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    padding:20px 10%;
+
+    position:sticky;
+    top:0;
+
+    background:rgba(255,255,255,0.04);
+
+    backdrop-filter:blur(12px);
+
+    border-bottom:1px solid rgba(255,255,255,0.08);
+
+    z-index:1000;
+}
+
+.logo{
+    font-size:32px;
+    font-weight:bold;
+    color:cyan;
+}
+
+nav ul{
+    display:flex;
+    list-style:none;
+    gap:25px;
+}
+
+nav ul li a{
+    text-decoration:none;
+    color:white;
+    position:relative;
+    transition:.3s;
+}
+
+nav ul li a:hover{
+    color:cyan;
+}
+
+nav ul li a::after{
+    content:'';
+    width:0;
+    height:2px;
+
+    background:cyan;
+
+    position:absolute;
+    left:0;
+    bottom:-5px;
+
+    transition:.4s;
+}
+
+nav ul li a:hover::after{
+    width:100%;
+}
+
+/* =========================
+   HOME
+========================= */
+
+.home{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    min-height:100vh;
+
+    padding:50px 10%;
+    gap:50px;
+    flex-wrap:wrap;
+}
+
+.home-text{
+    flex:1;
+    min-width:300px;
+
+    animation:slideLeft 1.2s ease;
+}
+
+.home-text h1{
+    font-size:clamp(35px,5vw,60px);
+    color:cyan;
+}
+
+.home-text h3{
+    font-size:clamp(20px,3vw,30px);
+    margin-top:10px;
+}
+
+.home-text p{
+    margin-top:20px;
+    line-height:1.8;
+    color:#dbeafe;
+}
+
+.btn{
+    display:inline-block;
+
+    margin-top:25px;
+    padding:12px 28px;
+
+    background:cyan;
+    color:black;
+
+    border-radius:8px;
+    text-decoration:none;
+
+    font-weight:bold;
+
+    transition:.4s;
+}
+
+.btn:hover{
+    transform:scale(1.05);
+    background:white;
+    box-shadow:0 0 20px cyan;
+}
+
+/* =========================
+   PROFILE IMAGE
+========================= */
+
+.home-image{
+    flex:1;
+    text-align:center;
+}
+
+.home-image img{
+    width:100%;
+    max-width:350px;
+    height:auto;
+
+    border-radius:20px;
+
+    border:5px solid cyan;
+
+    box-shadow:0 0 30px cyan;
+
+    animation:floatImage 4s ease-in-out infinite;
+}
+
+/* =========================
+   COMMON SECTIONS
+========================= */
+
+.section{
+    padding:80px 10%;
+}
+
+.section h2{
+    text-align:center;
+
+    margin-bottom:40px;
+
+    font-size:clamp(30px,4vw,42px);
+
+    color:cyan;
+}
+
+.section p{
+    color:#e2e8f0;
+    line-height:1.9;
+    font-size:18px;
+}
+
+/* =========================
+   SKILLS
+========================= */
+
+.skills-box{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+    gap:20px;
+}
+
+.card{
+    background:rgba(255,255,255,0.05);
+
+    backdrop-filter:blur(12px);
+
+    border:1px solid rgba(255,255,255,0.08);
+
+    padding:20px;
+
+    border-radius:12px;
+
+    transition:.4s;
+}
+
+.card:hover{
+    transform:translateY(-8px);
+
+    box-shadow:0 0 25px rgba(0,255,255,.4);
+
+    background:rgba(0,255,255,0.12);
+}
+
+/* =========================
+   PROJECTS
+========================= */
+
+.project-container{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:20px;
+}
+
+.project-card{
+    background:rgba(255,255,255,0.05);
+
+    backdrop-filter:blur(12px);
+
+    border:1px solid rgba(255,255,255,0.08);
+
+    padding:25px;
+
+    border-radius:12px;
+
+    transition:.4s;
+}
+
+.project-card:hover{
+    transform:translateY(-10px);
+
+    box-shadow:0 0 25px rgba(0,255,255,.4);
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+footer{
+    text-align:center;
+
+    padding:20px;
+
+    background:#000;
+}
+
+/* =========================
+   ANIMATIONS
+========================= */
+
+@keyframes slideLeft{
+
+    from{
+        opacity:0;
+        transform:translateX(-100px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateX(0);
+    }
+}
+
+@keyframes floatImage{
+
+    0%{
+        transform:translateY(0);
+    }
+
+    50%{
+        transform:translateY(-15px);
+    }
+
+    100%{
+        transform:translateY(0);
+    }
+}
+
+@keyframes moveBackground{
+
+    0%{
+        transform:rotate(0deg);
+    }
+
+    100%{
+        transform:rotate(360deg);
+    }
+}
+a {
+  
+  color: pink;       
+}
+
+@keyframes floatingGlow{
+
+    0%{
+        transform:translate(0,0);
+    }
+
+    50%{
+        transform:translate(120px,80px);
+    }
+
+    100%{
+        transform:translate(-50px,-30px);
+    }
+}
+
+/* =========================
+   TABLET
+========================= */
+
+@media(max-width:768px){
+
+    nav{
+        flex-direction:column;
+        gap:15px;
+        padding:20px;
+    }
+
+    nav ul{
+        flex-wrap:wrap;
+        justify-content:center;
+        gap:15px;
+    }
+
+    .home{
+        flex-direction:column-reverse;
+        text-align:center;
+        padding:40px 20px;
+    }
+
+    .section{
+        padding:70px 20px;
+    }
+
+    .home-image img{
+        max-width:260px;
+    }
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:480px){
+
+    .logo{
+        font-size:26px;
+    }
+
+    .home-text h1{
+        font-size:30px;
+    }
+
+    .home-text h3{
+        font-size:20px;
+    }
+
+    .btn{
+        width:100%;
+        text-align:center;
+    }
+
+    .card,
+    .project-card{
+        padding:15px;
+    }
+}
